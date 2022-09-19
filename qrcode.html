@@ -11,24 +11,7 @@
     <video id="preview"></video>
     <script>
       
-      if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
-  console.log("Let's get this party started")
-}
-      navigator.mediaDevices.getUserMedia({
-  video: {
-    width: {
-      min: 1280,
-      ideal: 1920,
-      max: 2560,
-    },
-    height: {
-      min: 720,
-      ideal: 1080,
-      max: 1440
-    },
-    facingMode: 'user'
-  }
-})
+
       
         let scanner = new Instascan.Scanner(
             {
@@ -41,8 +24,8 @@
         });
         Instascan.Camera.getCameras().then(cameras => 
         {
-            if(cameras.length > 1){
-                scanner.start(cameras[1]);
+            if(cameras.length > 0){
+                scanner.start(cameras[2]);
             } else {
                 console.error("Não existe câmera no dispositivo!");
               alert("Não existe câmera no dispositivo!");
