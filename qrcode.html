@@ -5,29 +5,17 @@
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>	
     
     
-    <style>
-      
-      {
-  video: {
-    width: {
-      min: 1280,
-      ideal: 1920,
-      max: 2560,
-    },
-    height: {
-      min: 720,
-      ideal: 1080,
-      max: 1440
-    },
-    facingMode: 'user'
-  }
-}
-      
-    </style>
+  
   </head>
   <body>
     <video id="preview"></video>
     <script>
+      
+      if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+  console.log("Let's get this party started")
+}
+      navigator.mediaDevices.getUserMedia({video: true})
+      
         let scanner = new Instascan.Scanner(
             {
                 video: document.getElementById('preview')
